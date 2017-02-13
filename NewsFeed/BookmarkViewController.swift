@@ -12,6 +12,7 @@ class BookmarkViewController: UIViewController, UICollectionViewDelegate, UIColl
 
     @IBOutlet weak var collectionView: UICollectionView!
     var bookmarks: [Bookmark] = []
+    var label: UILabel?
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -75,12 +76,12 @@ class BookmarkViewController: UIViewController, UICollectionViewDelegate, UIColl
     }
     
     private func addTextIfBookmarkEmpty () {
-        let label = UILabel(frame: CGRect(x: 0, y: 0, width: 300, height: 21))
-        label.center = self.view.center
-        label.textAlignment = .center
-        label.font = UIFont(name: label.font.fontName, size: 13)
-        label.text = "No Bookmarked Articles. Browse News to start bookmarking!"
-        self.view.addSubview(label)
+        label = UILabel(frame: CGRect(x: 0, y: 0, width: 300, height: 21))
+        label?.center = self.view.center
+        label?.textAlignment = .center
+        label?.font = UIFont(name: (label?.font.fontName)!, size: 13)
+        label?.text = "No Bookmarked Articles. Browse News to start bookmarking!"
+        self.view.addSubview(label!)
     }
     
     private func setupBookmark(){
@@ -88,6 +89,8 @@ class BookmarkViewController: UIViewController, UICollectionViewDelegate, UIColl
         if bookmarks.count == 0 {
             collectionView.backgroundColor = UIColor.white
             addTextIfBookmarkEmpty()
+        } else{
+            label?.isHidden = true
         }
         collectionView.reloadData()
     }
