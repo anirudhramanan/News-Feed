@@ -14,6 +14,7 @@ class NewsFeedViewController: UIViewController {
     var activityView: UIActivityIndicatorView!
     var newsArticles: [NewsArticles] = []
     var newsSource: [String] = ["google-news","bbc-news", "usa-today"]
+    let cellHeight: Int = 130
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -13,6 +13,7 @@ class BookmarkViewController: UIViewController, UICollectionViewDelegate, UIColl
     @IBOutlet weak var collectionView: UICollectionView!
     var bookmarks: [Bookmark] = []
     var label: UILabel?
+    let cellHeight: Int = 150
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -32,7 +33,7 @@ class BookmarkViewController: UIViewController, UICollectionViewDelegate, UIColl
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.bounds.size.width, height: CGFloat(150))
+        return CGSize(width: collectionView.bounds.size.width, height: CGFloat(cellHeight))
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

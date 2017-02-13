@@ -70,6 +70,21 @@ class NewsArticleViewController: UIViewController, UIWebViewDelegate {
         }
     }
     
+    @IBAction func shareNews(_ sender: Any) {
+        let text = newsArticle.title
+        
+        // set up activity view controller
+        let textToShare = [ text ]
+        let activityViewController = UIActivityViewController(activityItems: textToShare, applicationActivities: nil)
+        activityViewController.popoverPresentationController?.sourceView = self.view // so that iPads won't crash
+        
+        // exclude some activity types from the list (optional)
+        activityViewController.excludedActivityTypes = [ UIActivityType.airDrop, UIActivityType.postToFacebook ]
+        
+        // present the view controller
+        self.present(activityViewController, animated: true, completion: nil)
+    }
+    
     private func removeFromBookmark() {
         let realm = try! Realm()
         let bookmarkedNews = realm.objects(Bookmark.self).filter("uniqueId = %@", url).first!

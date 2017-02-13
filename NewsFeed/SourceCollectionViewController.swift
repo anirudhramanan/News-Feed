@@ -13,6 +13,7 @@ private let reuseIdentifier = "Cell"
 class SourceCollectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     var sources: [Sources] = []
     @IBOutlet weak var collectionView: UICollectionView!
+    let cellHeight: Int = 70
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +34,7 @@ class SourceCollectionViewController: UIViewController, UICollectionViewDelegate
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.bounds.size.width, height: CGFloat(70))
+        return CGSize(width: collectionView.bounds.size.width, height: CGFloat(cellHeight))
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
