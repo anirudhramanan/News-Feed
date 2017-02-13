@@ -54,7 +54,7 @@ class NationalNewsViewController: UIViewController, CLLocationManagerDelegate {
                     
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
                     let controller = storyboard.instantiateViewController(withIdentifier: "NewsFeedViewController") as! NewsFeedViewController
-                    controller.newsSource = self.sources[0].id!
+                    controller.newsSource = [self.sources[0].id!]
                     DispatchQueue.main.async {
                         self.stopLoadingIndicator()
                         self.view.addSubview(controller.view)

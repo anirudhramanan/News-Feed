@@ -51,10 +51,13 @@ class NewsDataProvider {
         })
     }
     
-    static func getPersistedNews (_ source: String)  -> [NewsFeed] {
+    static func getPersistedNews (_ source: String)  -> [NewsArticles] {
         let realm = try! Realm()
-        let newsFeedStored = realm.objects(NewsFeed.self).filter("source = %@", source)
-        var newsArray: [NewsFeed] = Array(newsFeedStored)
+        let newsFeedStored = realm.objects(NewsFeed.self).filter("source = %@", source).first
+        guard let articles = newsFeedStored?.articles else {
+            return [NewsArticles()]
+        }
+        var newsArray: [NewsArticles] = Array(articles)
         newsArray = newsArray.reversed()
         return newsArray
     }

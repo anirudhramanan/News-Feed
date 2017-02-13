@@ -41,7 +41,9 @@ class NewsFeedClient {
     }
     
     func downloadImages(url: String!, _ completionHandler: @escaping(_ image: UIImage) -> Void) {
-        
+        if url == nil {
+            return
+        }
         Alamofire.request(url).responseImage { response in
             completionHandler(response.result.value!)
         }

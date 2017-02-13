@@ -12,8 +12,8 @@ class NewsFeedViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     var activityView: UIActivityIndicatorView!
-    var newsArticles: [NewsFeed]!
-    var newsSource: String = "google-news"
+    var newsArticles: [NewsArticles] = []
+    var newsSource: [String] = ["google-news","bbc-news", "usa-today"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,11 +22,14 @@ class NewsFeedViewController: UIViewController {
     }
     
     @IBAction func refreshNews(_ sender: Any) {
-        NewsDataProvider.fetchAndStoreLiveNews(newsSource, {
-            success in
-            self.newsArticles = NewsDataProvider.getPersistedNews(self.newsSource)
-            self.collectionView.reloadData()
-        })
+        for source in newsSource {
+            NewsDataProvider.fetchAndStoreLiveNews(source, {
+                success in
+                self.newsArticles.removeAll()
+                self.newsArticles.append(contentsOf: NewsDataProvider.getPersistedNews(source))
+                self.collectionView.reloadData()
+            })
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

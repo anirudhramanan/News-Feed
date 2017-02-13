@@ -58,7 +58,7 @@ class SourceCollectionViewController: UIViewController, UICollectionViewDelegate
         guard let newsSource = sources[indexPath.row].id else {
             return
         }
-        newViewController.newsSource = newsSource
+        newViewController.newsSource = [newsSource]
         self.navigationController?.pushViewController(newViewController, animated: true)
     }
 }
