@@ -33,8 +33,15 @@ extension NewsFeedViewController: UICollectionViewDataSource, UICollectionViewDe
         }
         
         NewsFeedClient.sharedInstance().downloadImages(url: news.urlToImage, {
-            image in
-            cell.newsImage.image = image
+            (error, image) in
+            if error != nil {
+                DispatchQueue.main.async {
+                    self.showAlertView(error!)
+                    return
+                }
+            }
+            
+            cell.newsImage.image = image!
         })
         
         return cell
@@ -78,7 +85,7 @@ extension NewsFeedViewController: UICollectionViewDataSource, UICollectionViewDe
             if newsArticles.count > 0 {
                 let newsFeed = newsArticles[indexPath.row]
                 NewsFeedClient.sharedInstance().downloadImages(url: newsFeed.urlToImage, {
-                    image in
+                    (error, image) in
                     headerView.newsImage.image = image
                 })
             }

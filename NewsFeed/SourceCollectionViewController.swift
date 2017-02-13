@@ -42,7 +42,7 @@ class SourceCollectionViewController: UIViewController, UICollectionViewDelegate
         cell.sourcesText.text = source.name
         cell.sourcesImage.image = nil
         NewsFeedClient.sharedInstance().downloadImages(url: source.imageUrl, {
-            image in
+            (error, image) in
             cell.sourcesImage.image = image
         })
         return cell

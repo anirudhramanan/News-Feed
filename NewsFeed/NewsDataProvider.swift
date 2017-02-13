@@ -16,12 +16,17 @@ class NewsDataProvider {
         let realm = try! Realm()
     
         NewsFeedClient.sharedInstance().fetchNewsFromNetwork(source, {
-            (newsFeed) in
+            (error, newsFeed) in
+            
+            if error != nil {
+                responseReceived(false)
+                return
+            }
             
             let newsFeedStore = NewsFeed()
             newsFeedStore.source = source
             
-            for article in newsFeed.articles {
+            for article in (newsFeed?.articles)! {
                 newsFeedStore.articles.append(article)
             }
             
@@ -37,9 +42,14 @@ class NewsDataProvider {
         let realm = try! Realm()
         
         NewsFeedClient.sharedInstance().fetchSourcesFromNetwork({
-            (sources) in
+            (error, sources) in
             
-            for source in sources {
+            if error != nil {
+                responseReceived(false)
+                return
+            }
+            
+            for source in sources! {
                 if realm.objects(Sources.self).filter("id = %@", source.id!).count == 0 {
                     try! realm.write {
                         realm.add(source)

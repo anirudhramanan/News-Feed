@@ -41,7 +41,13 @@ class BookmarkViewController: UIViewController, UICollectionViewDelegate, UIColl
         cell.newsTitle.text = article?.title
         cell.newsImage.image = nil
         NewsFeedClient.sharedInstance().downloadImages(url: article?.urlToImage, {
-            image in
+            (error, image) in
+            if error != nil {
+                DispatchQueue.main.async {
+                    self.showAlertView(error!)
+                    return
+                }
+            }
             cell.newsImage.image = image
         })
         return cell
