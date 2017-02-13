@@ -15,11 +15,11 @@ class NewsFeedClient {
     
     func fetchNewsFromNetwork(_ source: String, _ completionHandler: @escaping(_ error: String?, _ newsFeed: NewsFeed?) -> Void) {
         
-        let url: String = "https://newsapi.org/v1/articles?source="  + source + "&apiKey=" + APIConstant.API_KEY
+        let url: String = APIConstant.NEWS_ARTICLE_HOST  + source + "&apiKey=" + APIConstant.API_KEY
         
         Alamofire.request(url).responseJSON { response in
-            if response.error != nil{
-                completionHandler(response.error?.localizedDescription, nil)
+            if let error = response.error {
+                completionHandler(error.localizedDescription, nil)
                 return
             }
             
@@ -33,12 +33,12 @@ class NewsFeedClient {
     }
     
     func fetchSourcesFromNetwork(_ completionHandler: @escaping(_ error: String?, _ sources: [Sources]?) -> Void) {
-        let url: String = "https://newsapi.org/v1/sources?language=en"
+        let url: String = APIConstant.NEWS_SOURCE_HOST
         
         Alamofire.request(url).responseJSON { response in
             
-            if response.error != nil{
-                completionHandler(response.error?.localizedDescription, nil)
+            if let error = response.error {
+                completionHandler(error.localizedDescription, nil)
                 return
             }
             
@@ -59,8 +59,8 @@ class NewsFeedClient {
         
         Alamofire.request(url).responseImage { response in
         
-            if response.error != nil{
-                completionHandler(response.error?.localizedDescription, nil)
+            if let error = response.error {
+                completionHandler(error.localizedDescription, nil)
                 return
             }
             

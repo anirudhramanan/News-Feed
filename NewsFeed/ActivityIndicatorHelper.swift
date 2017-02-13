@@ -16,6 +16,7 @@ class ActivityIndicatorHelper{
         activityView.color = UIColor.black
         activityView.center = view.center
         activityView.startAnimating()
+        activityView.hidesWhenStopped = true
         view.addSubview(activityView)
         return activityView
     }

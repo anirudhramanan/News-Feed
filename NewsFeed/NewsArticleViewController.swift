@@ -33,10 +33,6 @@ class NewsArticleViewController: UIViewController, UIWebViewDelegate {
         }
     }
     
-    func webViewDidFinishLoad(_ webView: UIWebView) {
-        indicator.isHidden = true
-    }
-    
     private func checkIfBookmarked() -> Bool {
         let realm = try! Realm()
         let bookmarkedNews = realm.objects(Bookmark.self).filter("uniqueId = %@", url).first
@@ -96,6 +92,7 @@ class NewsArticleViewController: UIViewController, UIWebViewDelegate {
     private func checkInternet () {
         if !NetworkConnectivityManager.isInternetAvailable() {
             showAlertView("Internet Connectivity seems to be offline")
+            indicator.stopAnimating()
         }
     }
     

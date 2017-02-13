@@ -37,8 +37,9 @@ class NationalNewsViewController: UIViewController, CLLocationManagerDelegate {
         self.locationManager.stopUpdatingLocation()
         
         CLGeocoder().reverseGeocodeLocation(manager.location!, completionHandler: {(placemarks, error) -> Void in
-            if error != nil {
-                print("Reverse geocoder failed with error" + error!.localizedDescription)
+            if let error = error {
+                self.showAlertView(error.localizedDescription)
+                self.activityView.stopAnimating()
                 return
             }
             
@@ -67,7 +68,8 @@ class NationalNewsViewController: UIViewController, CLLocationManagerDelegate {
                     }
                 })
             } else {
-                print("Problem with the data received from geocoder")
+                self.showAlertView("Problem with the data received from geocoder")
+                self.activityView.stopAnimating()
             }
         })
     }

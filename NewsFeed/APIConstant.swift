@@ -10,4 +10,6 @@ import Foundation
 
 struct APIConstant {
     static let API_KEY: String = "77aed9f1b26645069c13e6019841fcae"
+    static let NEWS_ARTICLE_HOST: String = "https://newsapi.org/v1/articles?source="
+    static let NEWS_SOURCE_HOST: String = "https://newsapi.org/v1/sources?language=en"
 }
