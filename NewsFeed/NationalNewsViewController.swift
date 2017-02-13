@@ -11,23 +11,19 @@ import CoreLocation
 
 class NationalNewsViewController: UIViewController, CLLocationManagerDelegate {
     
-    var locationManager: CLLocationManager!
-    var activityView: UIActivityIndicatorView!
+    private var locationManager: CLLocationManager!
+    private var activityView: UIActivityIndicatorView!
     var sources: [Sources] = []
     private var didPerformGeocode = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        showLoadingIndicator()
+        activityView = ActivityIndicatorHelper.showLoadingIndicator(view: self.view)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        locationManager = CLLocationManager()
-        locationManager.delegate = self
-        locationManager.distanceFilter = 1000
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.startUpdatingLocation()
+        configureLocationManager()
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
@@ -54,9 +50,17 @@ class NationalNewsViewController: UIViewController, CLLocationManagerDelegate {
                     
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
                     let controller = storyboard.instantiateViewController(withIdentifier: "NewsFeedViewController") as! NewsFeedViewController
-                    controller.newsSource = [self.sources[0].id!]
+                    
+                    var newsSources: [String] = []
+                    for source in self.sources {
+                        if !newsSources.contains(source.id!) {
+                            newsSources.append(source.id!)
+                        }
+                    }
+                    
+                    controller.newsSource = newsSources
                     DispatchQueue.main.async {
-                        self.stopLoadingIndicator()
+                        ActivityIndicatorHelper.stopLoadingIndicator(activityView: self.activityView)
                         self.view.addSubview(controller.view)
                         self.addChildViewController(controller)
                         controller.didMove(toParentViewController: self)
@@ -68,17 +72,11 @@ class NationalNewsViewController: UIViewController, CLLocationManagerDelegate {
         })
     }
     
-    func showLoadingIndicator () {
-        activityView = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
-        activityView.color = UIColor.black
-        activityView.center = self.view.center
-        activityView.startAnimating()
-        self.view.addSubview(activityView)
-    }
-    
-    func stopLoadingIndicator () {
-        if activityView != nil {
-            activityView.stopAnimating()
-        }
+    private func configureLocationManager () {
+        locationManager = CLLocationManager()
+        locationManager.delegate = self
+        locationManager.distanceFilter = 1000
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
     }
 }

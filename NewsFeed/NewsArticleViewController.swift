@@ -73,7 +73,7 @@ class NewsArticleViewController: UIViewController, UIWebViewDelegate {
         let realm = try! Realm()
         let bookmarkedNews = realm.objects(Bookmark.self).filter("uniqueId = %@", url).first!
         try! realm.write {
-            realm.add(bookmarkedNews)
+            realm.delete(bookmarkedNews)
         }
     }
     

@@ -74,12 +74,15 @@ extension NewsFeedViewController: UICollectionViewDataSource, UICollectionViewDe
         case UICollectionElementKindSectionHeader:
             let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "NewsHeaderView",
                                                                              for: indexPath) as! NewsCollectionReusableView
-            let newsFeed = newsArticles[indexPath.row]
-            headerView.newsTitle.text = newsFeed.title
-            NewsFeedClient.sharedInstance().downloadImages(url: newsFeed.urlToImage, {
-                image in
-                headerView.newsImage.image = image
-            })
+            
+            if newsArticles.count > 0 {
+                let newsFeed = newsArticles[indexPath.row]
+                NewsFeedClient.sharedInstance().downloadImages(url: newsFeed.urlToImage, {
+                    image in
+                    headerView.newsImage.image = image
+                })
+            }
+            
             return headerView
         default:
             assert(false, "Unexpected element kind")
@@ -94,14 +97,13 @@ extension NewsFeedViewController: UICollectionViewDataSource, UICollectionViewDe
     private func fetchNews (newsSource: [String]) {
         for source in newsSource {
             let persistedNews = NewsDataProvider.getPersistedNews(source)
-            if persistedNews.count > 0 {
+            if persistedNews.count > 1 {
                 newsArticles.append(contentsOf: persistedNews)
                 configureUI(hide: false)
             }
             NewsDataProvider.fetchAndStoreLiveNews(source, {
                 success in
                 self.configureUI(hide: false)
-                self.newsArticles.removeAll()
                 self.newsArticles.append(contentsOf: NewsDataProvider.getPersistedNews(source))
                 self.collectionView.reloadData()
             })

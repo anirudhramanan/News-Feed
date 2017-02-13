@@ -15,7 +15,7 @@ class NewsFeedClient {
     
     func fetchNewsFromNetwork(_ source: String, _ completionHandler: @escaping(_ newsFeed: NewsFeed) -> Void) {
         
-        let url: String = "https://newsapi.org/v1/articles?source="  + source + "&apiKey=77aed9f1b26645069c13e6019841fcae"
+        let url: String = "https://newsapi.org/v1/articles?source="  + source + "&apiKey=" + APIConstant.API_KEY
         
         Alamofire.request(url).responseJSON { response in
             guard let JSON = response.result.value else {
@@ -45,7 +45,12 @@ class NewsFeedClient {
             return
         }
         Alamofire.request(url).responseImage { response in
-            completionHandler(response.result.value!)
+        
+            guard let value = response.result.value else{
+                return
+            }
+            
+            completionHandler(value)
         }
     }
     

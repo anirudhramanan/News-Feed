@@ -167,30 +167,16 @@
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="S5C-7H-TaW">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hCq-8l-wop">
-                                            <rect key="frame" x="0.0" y="170" width="375" height="30"/>
-                                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="cNn-Yd-V3Z"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                     </subviews>
                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
-                                        <constraint firstItem="hCq-8l-wop" firstAttribute="leading" secondItem="hnm-lx-W9w" secondAttribute="leadingMargin" constant="-8" id="7Eh-ev-lj1"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="hCq-8l-wop" secondAttribute="trailing" constant="-8" id="Bbb-fU-3bs"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="S5C-7H-TaW" secondAttribute="bottom" constant="-8" id="F2y-oW-SKd"/>
-                                        <constraint firstItem="hCq-8l-wop" firstAttribute="bottom" secondItem="hnm-lx-W9w" secondAttribute="bottomMargin" constant="8" id="bGP-SV-QH9"/>
                                         <constraint firstItem="S5C-7H-TaW" firstAttribute="leading" secondItem="hnm-lx-W9w" secondAttribute="leadingMargin" constant="-8" id="iuf-Q1-o5y"/>
                                         <constraint firstItem="S5C-7H-TaW" firstAttribute="top" secondItem="hnm-lx-W9w" secondAttribute="topMargin" constant="-8" id="lf1-UJ-rY2"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="S5C-7H-TaW" secondAttribute="trailing" constant="-8" id="sxs-Vi-pXN"/>
                                     </constraints>
                                     <connections>
                                         <outlet property="newsImage" destination="S5C-7H-TaW" id="rW9-01-Lif"/>
-                                        <outlet property="newsTitle" destination="hCq-8l-wop" id="NTz-13-0oS"/>
                                     </connections>
                                 </collectionReusableView>
                             </collectionView>
@@ -490,6 +476,6 @@
         <image name="world icon filled" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="zvu-71-mYW"/>
+        <segue reference="SR8-bI-LGk"/>
     </inferredMetricsTieBreakers>
 </document>

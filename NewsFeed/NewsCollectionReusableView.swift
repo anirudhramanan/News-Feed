@@ -10,5 +10,4 @@ import UIKit
 
 class NewsCollectionReusableView: UICollectionReusableView {
     @IBOutlet weak var newsImage: UIImageView!
-    @IBOutlet weak var newsTitle: UILabel!
 }

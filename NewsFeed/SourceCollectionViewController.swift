@@ -27,10 +27,6 @@ class SourceCollectionViewController: UIViewController, UICollectionViewDelegate
         })
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-    }
-    
     // MARK: UICollectionViewDataSource
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return sources.count
