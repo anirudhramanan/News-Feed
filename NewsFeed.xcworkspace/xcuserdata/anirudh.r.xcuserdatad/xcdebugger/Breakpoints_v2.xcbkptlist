@@ -42,28 +42,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "NewsFeed/NewsFeedViewController.swift"
-            timestampString = "508667059.075354"
+            timestampString = "508671897.616445"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "37"
-            endingLineNumber = "37"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
             landmarkName = "viewWillAppear(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "NewsFeed/BookmarkViewController.swift"
-            timestampString = "508667059.075354"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "90"
-            endingLineNumber = "90"
-            landmarkName = "setupBookmark()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -122,7 +106,7 @@
                   moduleName = "NewsFeed"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/anirudh.r/Development/iOS/NewsFeed/NewsFeed/NewsFeedCollectionView.swift"
-                  timestampString = "508666431.194731"
+                  timestampString = "508671742.883931"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "35"
@@ -137,7 +121,7 @@
                   moduleName = "NewsFeed"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/anirudh.r/Development/iOS/NewsFeed/NewsFeed/NewsFeedCollectionView.swift"
-                  timestampString = "508666431.195982"
+                  timestampString = "508671742.885375"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "37"

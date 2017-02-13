@@ -11,6 +11,7 @@ import UIKit
 class BookmarkViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var emptyLabel: UILabel!
     var bookmarks: [Bookmark] = []
     var label: UILabel?
     let cellHeight: Int = 150
@@ -26,6 +27,10 @@ class BookmarkViewController: UIViewController, UICollectionViewDelegate, UIColl
         self.navigationController?.toolbar.isHidden = true
         self.tabBarController?.tabBar.isHidden = false
         setupBookmark()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -76,22 +81,13 @@ class BookmarkViewController: UIViewController, UICollectionViewDelegate, UIColl
         }
     }
     
-    private func addTextIfBookmarkEmpty () {
-        label = UILabel(frame: CGRect(x: 0, y: 0, width: 300, height: 21))
-        label?.center = self.view.center
-        label?.textAlignment = .center
-        label?.font = UIFont(name: (label?.font.fontName)!, size: 13)
-        label?.text = "No Bookmarked Articles. Browse News to start bookmarking!"
-        self.view.addSubview(label!)
-    }
-    
     private func setupBookmark(){
         bookmarks = NewsDataProvider.getBookmarkedArticles()
         if bookmarks.count == 0 {
             collectionView.backgroundColor = UIColor.white
-            addTextIfBookmarkEmpty()
+            emptyLabel.isHidden = false
         } else{
-            label?.isHidden = true
+            emptyLabel.isHidden = true
         }
         collectionView.reloadData()
     }

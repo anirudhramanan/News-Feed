@@ -70,6 +70,10 @@
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="clX-3p-hzw" id="meN-yM-K55"/>
+                                    <outlet property="delegate" destination="clX-3p-hzw" id="FIJ-Z3-TX8"/>
+                                </connections>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -407,11 +411,19 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Bookmarks Added" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="muu-7P-0y3">
+                                <rect key="frame" x="104" y="291" width="166.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="f5g-2o-0mI" secondAttribute="trailing" id="F6k-rq-La1"/>
                             <constraint firstItem="f5g-2o-0mI" firstAttribute="leading" secondItem="NCS-4N-S4L" secondAttribute="leading" id="Lr4-b2-rut"/>
+                            <constraint firstItem="muu-7P-0y3" firstAttribute="centerX" secondItem="NCS-4N-S4L" secondAttribute="centerX" id="VUW-U7-ZAK"/>
+                            <constraint firstItem="muu-7P-0y3" firstAttribute="centerY" secondItem="NCS-4N-S4L" secondAttribute="centerY" id="bXu-1M-yYO"/>
                             <constraint firstItem="iXL-0G-hWk" firstAttribute="top" secondItem="f5g-2o-0mI" secondAttribute="bottom" id="brw-DS-Ee9"/>
                             <constraint firstItem="f5g-2o-0mI" firstAttribute="top" secondItem="sVm-n6-Gzl" secondAttribute="bottom" id="ifL-Cu-soS"/>
                         </constraints>
@@ -419,6 +431,7 @@
                     <navigationItem key="navigationItem" title="Bookmarks" id="8TX-in-Nhs"/>
                     <connections>
                         <outlet property="collectionView" destination="f5g-2o-0mI" id="Hbc-66-ohg"/>
+                        <outlet property="emptyLabel" destination="muu-7P-0y3" id="5Iv-h8-TLk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cJY-UP-Bb5" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -480,6 +493,6 @@
         <image name="world icon filled" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="SR8-bI-LGk"/>
+        <segue reference="zvu-71-mYW"/>
     </inferredMetricsTieBreakers>
 </document>

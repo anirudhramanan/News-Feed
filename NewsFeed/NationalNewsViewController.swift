@@ -75,7 +75,6 @@ class NationalNewsViewController: UIViewController, CLLocationManagerDelegate {
     private func configureLocationManager () {
         locationManager = CLLocationManager()
         locationManager.delegate = self
-        locationManager.distanceFilter = 1000
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
     }

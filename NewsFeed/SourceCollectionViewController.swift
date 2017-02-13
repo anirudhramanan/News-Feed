@@ -17,8 +17,6 @@ class SourceCollectionViewController: UIViewController, UICollectionViewDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionView.delegate = self
-        collectionView.dataSource = self
         sources = NewsDataProvider.getPersistedSources()
         
         NewsDataProvider.fetchAndStoreSources({
@@ -56,6 +54,6 @@ class SourceCollectionViewController: UIViewController, UICollectionViewDelegate
             return
         }
         newViewController.newsSource = [newsSource]
-        self.navigationController?.pushViewController(newViewController, animated: true)
+        navigationController?.pushViewController(newViewController, animated: true)
     }
 }

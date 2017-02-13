@@ -52,9 +52,11 @@ class NewsFeedClient {
     }
     
     func downloadImages(url: String!, _ completionHandler: @escaping(_ error: String?, _ image: UIImage?) -> Void) {
-        if url == nil {
+        
+        guard let url = url else {
             return
         }
+        
         Alamofire.request(url).responseImage { response in
         
             if response.error != nil{
