@@ -11,7 +11,7 @@ import UIKit
 class NewsFeedViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
-    var activityView: UIActivityIndicatorView!
+    @IBOutlet weak var indicator: UIActivityIndicatorView!
     var newsArticles: [NewsArticles] = []
     var newsSource: [String] = ["google-news","bbc-news", "usa-today"]
     let cellHeight: Int = 130
@@ -27,6 +27,7 @@ class NewsFeedViewController: UIViewController {
             fetchUpdatedNews()
         } else{
             showAlertView("Internet Connectivity seems to be offline")
+            indicator.stopAnimating()
         }
     }
     
@@ -35,13 +36,13 @@ class NewsFeedViewController: UIViewController {
         collectionView.reloadSections(IndexSet(integer: 0))
         collectionView.reloadData()
         
-        let activityIndicator = ActivityIndicatorHelper.showLoadingIndicator(view: self.view)
+        indicator.startAnimating()
         for source in newsSource {
             NewsDataProvider.fetchAndStoreLiveNews(source, {
                 success in
                 self.newsArticles.append(contentsOf: NewsDataProvider.getPersistedNews(source))
                 self.collectionView.reloadData()
-                ActivityIndicatorHelper.stopLoadingIndicator(activityView: activityIndicator)
+                self.indicator.stopAnimating()
             })
         }
     }

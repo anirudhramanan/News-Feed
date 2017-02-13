@@ -184,13 +184,19 @@
                                     </connections>
                                 </collectionReusableView>
                             </collectionView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="4wc-Fx-wKY">
+                                <rect key="frame" x="169" y="283" width="37" height="37"/>
+                                <color key="color" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="ykQ-81-QQW" secondAttribute="trailing" id="H20-C7-93Z"/>
                             <constraint firstItem="ykQ-81-QQW" firstAttribute="top" secondItem="Tch-07-S2P" secondAttribute="bottom" id="KXP-Xk-I60"/>
                             <constraint firstItem="UQj-gN-X4B" firstAttribute="top" secondItem="ykQ-81-QQW" secondAttribute="bottom" id="QPs-FD-erG"/>
+                            <constraint firstItem="4wc-Fx-wKY" firstAttribute="centerY" secondItem="kpa-yO-1x5" secondAttribute="centerY" id="WNU-Fe-qlw"/>
                             <constraint firstItem="ykQ-81-QQW" firstAttribute="leading" secondItem="kpa-yO-1x5" secondAttribute="leading" id="cP3-WA-8OB"/>
+                            <constraint firstItem="4wc-Fx-wKY" firstAttribute="centerX" secondItem="kpa-yO-1x5" secondAttribute="centerX" id="kLR-ke-34P"/>
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
@@ -204,6 +210,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="ykQ-81-QQW" id="XmL-pK-g5n"/>
+                        <outlet property="indicator" destination="4wc-Fx-wKY" id="aqL-qO-Bwt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7XE-G2-EDg" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -343,9 +350,22 @@
                     <view key="view" contentMode="scaleToFill" id="g6f-tu-JkH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="zJW-oU-PXg">
+                                <rect key="frame" x="169" y="315" width="37" height="37"/>
+                                <color key="color" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="zJW-oU-PXg" firstAttribute="centerX" secondItem="g6f-tu-JkH" secondAttribute="centerX" id="MeM-qF-CqG"/>
+                            <constraint firstItem="zJW-oU-PXg" firstAttribute="centerY" secondItem="g6f-tu-JkH" secondAttribute="centerY" id="jY4-I0-c29"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="National News" id="lAc-f9-1AR"/>
+                    <connections>
+                        <outlet property="activityIndicator" destination="zJW-oU-PXg" id="8PJ-ee-yH8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mlZ-cd-95A" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

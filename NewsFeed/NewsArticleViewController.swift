@@ -33,6 +33,10 @@ class NewsArticleViewController: UIViewController, UIWebViewDelegate {
         }
     }
     
+    func webViewDidFinishLoad(_ webView: UIWebView) {
+        indicator.stopAnimating()
+    }
+    
     private func checkIfBookmarked() -> Bool {
         let realm = try! Realm()
         let bookmarkedNews = realm.objects(Bookmark.self).filter("uniqueId = %@", url).first

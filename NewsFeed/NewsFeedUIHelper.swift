@@ -14,10 +14,10 @@ extension NewsFeedViewController {
     func configureUI (hide: Bool) {
         if !hide {
             collectionView.isHidden = false
-            ActivityIndicatorHelper.stopLoadingIndicator(activityView: self.activityView)
+            indicator.stopAnimating()
         } else {
             collectionView.isHidden = true
-            self.activityView = ActivityIndicatorHelper.showLoadingIndicator(view: self.view)
+            indicator.startAnimating()
         }
     }
 }

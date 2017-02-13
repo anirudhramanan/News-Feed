@@ -96,11 +96,6 @@ extension NewsFeedViewController: UICollectionViewDataSource, UICollectionViewDe
         }
     }
     
-    func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "newsFeed", for: indexPath) as! NewsCollectionViewCell
-        cell.newsImage.image = nil
-    }
-    
     private func fetchNews (newsSource: [String]) {
         for source in newsSource {
             let persistedNews = NewsDataProvider.getPersistedNews(source)

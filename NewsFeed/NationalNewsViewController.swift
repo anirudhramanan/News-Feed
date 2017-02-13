@@ -15,10 +15,10 @@ class NationalNewsViewController: UIViewController, CLLocationManagerDelegate {
     private var activityView: UIActivityIndicatorView!
     var sources: [Sources] = []
     private var didPerformGeocode = false
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        activityView = ActivityIndicatorHelper.showLoadingIndicator(view: self.view)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -61,7 +61,7 @@ class NationalNewsViewController: UIViewController, CLLocationManagerDelegate {
                     
                     controller.newsSource = newsSources
                     DispatchQueue.main.async {
-                        ActivityIndicatorHelper.stopLoadingIndicator(activityView: self.activityView)
+                        self.activityIndicator.stopAnimating()
                         self.view.addSubview(controller.view)
                         self.addChildViewController(controller)
                         controller.didMove(toParentViewController: self)
