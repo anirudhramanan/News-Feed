@@ -19,7 +19,7 @@ class NewsFeedClient {
         
         Alamofire.request(url).responseJSON { response in
             if response.error != nil{
-                completionHandler(response.error.debugDescription, nil)
+                completionHandler(response.error?.localizedDescription, nil)
                 return
             }
             
@@ -38,7 +38,7 @@ class NewsFeedClient {
         Alamofire.request(url).responseJSON { response in
             
             if response.error != nil{
-                completionHandler(response.error.debugDescription, nil)
+                completionHandler(response.error?.localizedDescription, nil)
                 return
             }
             
@@ -58,7 +58,7 @@ class NewsFeedClient {
         Alamofire.request(url).responseImage { response in
         
             if response.error != nil{
-                completionHandler(response.error.debugDescription, nil)
+                completionHandler(response.error?.localizedDescription, nil)
                 return
             }
             

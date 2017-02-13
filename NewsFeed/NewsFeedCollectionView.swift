@@ -41,7 +41,7 @@ extension NewsFeedViewController: UICollectionViewDataSource, UICollectionViewDe
                 }
             }
             
-            cell.newsImage.image = image!
+            cell.newsImage.image = image
         })
         
         return cell

@@ -20,6 +20,7 @@ class NewsArticleViewController: UIViewController, UIWebViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        checkInternet()
         webView.delegate = self
         url = newsArticle.url
         if let url = URL(string: (url)!) {
@@ -74,6 +75,12 @@ class NewsArticleViewController: UIViewController, UIWebViewDelegate {
         let bookmarkedNews = realm.objects(Bookmark.self).filter("uniqueId = %@", url).first!
         try! realm.write {
             realm.delete(bookmarkedNews)
+        }
+    }
+    
+    private func checkInternet () {
+        if !NetworkConnectivityManager.isInternetAvailable() {
+            showAlertView("Internet Connectivity seems to be offline")
         }
     }
     
