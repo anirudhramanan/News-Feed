@@ -107,8 +107,8 @@ extension NewsFeedViewController: UICollectionViewDataSource, UICollectionViewDe
                 success in
                 self.configureUI(hide: false)
                 self.newsArticles.append(contentsOf: NewsDataProvider.getPersistedNews(source))
-                self.collectionView.reloadData()
             })
         }
+        collectionView.reloadData()
     }
 }

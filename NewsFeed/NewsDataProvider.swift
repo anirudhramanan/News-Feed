@@ -72,6 +72,11 @@ class NewsDataProvider {
         return newsArray
     }
     
+    static func removePersistedNews () {
+        let realm = try! Realm()
+        realm.deleteAll()
+    }
+    
     static func getPersistedSources ()  -> [Sources] {
         let realm = try! Realm()
         let newsFeedStored = realm.objects(Sources.self)

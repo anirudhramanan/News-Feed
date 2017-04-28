@@ -33,23 +33,25 @@ class NewsFeedViewController: UIViewController {
     
     private func fetchUpdatedNews() {
         newsArticles.removeAll()
+        collectionView.backgroundColor = UIColor.white
         collectionView.reloadSections(IndexSet(integer: 0))
         collectionView.reloadData()
         
         indicator.startAnimating()
+        
         for source in newsSource {
             NewsDataProvider.fetchAndStoreLiveNews(source, {
                 success in
                 self.newsArticles.append(contentsOf: NewsDataProvider.getPersistedNews(source))
-                self.collectionView.reloadData()
                 self.indicator.stopAnimating()
+                self.collectionView.reloadData()
             })
         }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.toolbar.isHidden = true
-        self.tabBarController?.tabBar.isHidden = false
+        navigationController?.toolbar.isHidden = true
+        tabBarController?.tabBar.isHidden = false
     }
 }
